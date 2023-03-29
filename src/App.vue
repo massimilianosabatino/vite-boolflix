@@ -1,4 +1,5 @@
 <script>
+  import axios from 'axios'
   import HeaderAppComponent from './components/HeaderAppComponent.vue';
   import MainAppComponent from './components/MainAppComponent.vue';
   import FooterAppComponent from './components/FooterAppComponent.vue';
