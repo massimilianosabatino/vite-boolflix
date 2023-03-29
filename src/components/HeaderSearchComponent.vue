@@ -11,15 +11,23 @@ export default {
     },
     methods: {
         getMovies(){
+            //Utility variables
             const api = 'api_key=' + this.store.utility.apiKey;
             const lang = 'language=it-IT';
+            
+            //User search field
             const searchText = 'query=' + this.store.searchKey;
             const search = encodeURI(searchText);
-            const url = this.store.utility.getApiMovies;
-            console.log(`${url}${api}&${lang}&${search}`)
-            axios.get(`${url}${api}&${lang}&${search}`)
+
+            //Get Movies
+            const urlMovie = this.store.utility.getApiMovies;
+            axios.get(`${urlMovie}${api}&${lang}&${search}`)
                 .then(response => this.store.movies = response.data.results);
-                console.log(this.store.movies)
+
+            //Get Tv Shows
+            const urlTv = this.store.utility.getApiTvShows;
+            axios.get(`${urlTv}${api}&${lang}&${search}`)
+            .then(response => this.store.tvShows = response.data.results);
         },
     }
 }
