@@ -20,6 +20,6 @@ Posizionando il mouse sopra una locandina, sarà possibile visualizzare:
 
 ## Setup
 Per avviare il pacchetto dopo aver clonato il repository è necessario eseguire l’installazione dei pacchetti richiesti tramite il comando  
-	num install
+	npm install
 Successivamente avviare il server di sviluppo con  
 	npm run dev
