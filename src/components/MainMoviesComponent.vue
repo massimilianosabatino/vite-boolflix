@@ -12,7 +12,6 @@
                 store,
             }
         },
-
     }
 </script>
 

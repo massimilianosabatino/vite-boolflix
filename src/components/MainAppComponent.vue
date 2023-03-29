@@ -12,6 +12,7 @@
 
 <template>
     <MainMoviesComponent />
+    <MainTvShowsComponent />
 </template>
 
 <style lang="scss" scoped>
