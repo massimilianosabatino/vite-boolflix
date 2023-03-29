@@ -18,7 +18,8 @@ export default {
             const url = this.store.utility.getApiMovies;
             console.log(`${url}${api}&${lang}&${search}`)
             axios.get(`${url}${api}&${lang}&${search}`)
-                .then(response => console.log(response.data.results)) 
+                .then(response => this.store.movies = response.data.results);
+                console.log(this.store.movies)
         },
     }
 }
@@ -26,6 +27,7 @@ export default {
 
 <template>
     <input type="text" @keyup.enter="getMovies" v-model="store.searchKey">
+    <button type="button" @click="getMovies">Cerca</button>
 </template>
 
 <style lang="scss" scoped>
