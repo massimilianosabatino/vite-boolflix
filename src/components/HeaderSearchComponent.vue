@@ -27,7 +27,7 @@ export default {
             //Get Tv Shows
             const urlTv = this.store.utility.getApiTvShows;
             axios.get(`${urlTv}${api}&${lang}&${search}`)
-            .then(response => this.store.tvShows = response.data.results);
+                .then(response => this.store.tvShows = response.data.results);
         },
     }
 }
