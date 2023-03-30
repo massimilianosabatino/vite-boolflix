@@ -11,9 +11,7 @@
 </script>
 
 <template>
-    <h2>Movies</h2>
     <MainMoviesComponent />
-    <h2>Tv Shows</h2>
     <MainTvShowsComponent />
 </template>
 

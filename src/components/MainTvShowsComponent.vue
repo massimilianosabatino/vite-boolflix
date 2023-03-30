@@ -1,52 +1,29 @@
 <script>
     import { store } from '../store';
-    import FlagInsert from './FlagInsert.vue';
-    import CountryFlag from 'vue-country-flag-next'
+    import CardComponent from './CardComponent.vue';
 
     export default {
         name: 'Tv Show Component',
         components: {
-            FlagInsert,
-            CountryFlag,
-        },
-        data(){
-            return {
-                store,
-            }
-        },
-        methods: {
-            convertLangIso(show){
-                switch (show) {
-                    case 'en':
-                        return 'gb'
-                    case 'ja':
-                        return 'jp'
-                    case 'zh':
-                        return 'cn'
-
-                    default:
-                    return show
-                }
-            },
-        },
-    }
+        CardComponent,
+    },
+    data() {
+        return {
+            store,
+        }
+    },
+}
 </script>
 
 <template>
+    <h2>Tv Shows</h2>
     <ul>
         <li v-for="show in store.tvShows">
-            {{ show.name }}
-            <ul>
-                <li>{{ show.original_name }}</li>
-                <li><country-flag :country='convertLangIso(show.original_language)' size='small'/></li>
-                <!-- <li class="lang-container"><FlagInsert :lang="show.original_language"/></li> -->
-                <li>{{ show.vote_average }}</li>
-            </ul>
+            <CardComponent :info="show" />
         </li>
     </ul>
 </template>
 
 <style lang="scss" scoped>
-
 
 </style>
