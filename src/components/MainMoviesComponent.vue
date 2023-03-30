@@ -1,16 +1,35 @@
 <script>
     import { store } from '../store';
     import FlagInsert from './FlagInsert.vue';
+    import CountryFlag from 'vue-country-flag-next'
+
+
 
     export default {
         name: 'Movies Component',
         components: {
             FlagInsert,
+            CountryFlag,
         },
         data(){
             return {
                 store,
             }
+        },
+       methods: {
+            convertLangIso(movie){
+                switch (movie) {
+                    case 'en':
+                        return 'gb'
+                    case 'ja':
+                        return 'jp'
+                    case 'zh':
+                        return 'cn'
+                
+                    default:
+                        return movie
+                }
+            },
         },
     }
 </script>
@@ -21,7 +40,8 @@
             {{ movie.title }}
             <ul>
                 <li>{{ movie.original_title }}</li>
-                <li class="lang-container"><FlagInsert :lang="movie.original_language"/></li>
+                <li><country-flag :country='convertLangIso(movie.original_language)' size='small'/></li>
+                <!-- <li class="lang-container"><FlagInsert :lang="movie.original_language"/></li> -->
                 <li>{{ movie.vote_average }}</li>
             </ul>
         </li>
