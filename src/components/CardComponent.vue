@@ -1,5 +1,6 @@
 <script>
 import CountryFlag from 'vue-country-flag-next'
+import { store } from '../store'
 export default {
     name: 'Card',
     props: {
@@ -40,14 +41,23 @@ export default {
             const vote = Math.round(this.info.vote_average * 0.5);
             return vote
         },
+        setPoster(){
+            console.log(this.info)
+            return this.store.utility.imgBaseUrl + this.store.utility.imgSize + this.info.poster_path;
+        }
     },
-
+    data(){
+        return {
+            store,
+        }
+    }
 }
 </script>
 
 <template>
     <!-- name in show not title -->
             <h1>{{ changeNameToTitle.title }}</h1>
+            <img :src="setPoster" alt="">
             <ul>
                 <li>{{ changeNameToTitle.original_title }}</li>
                 <li><country-flag :country='convertLangIso' size='small' /></li>
