@@ -49,6 +49,7 @@ export default {
     data(){
         return {
             store,
+            imYea: false,
         }
     }
 }
@@ -56,14 +57,20 @@ export default {
 
 <template>
     <!-- name in show not title -->
+        <!-- <div v-if="imYea"><h1>CIAO</h1></div> -->
+        <div @mouseenter="imYea = true" @mouseleave="imYea = false">
             <h1>{{ changeNameToTitle.title }}</h1>
             <img :src="setPoster" alt="">
             <ul>
                 <li>{{ changeNameToTitle.original_title }}</li>
                 <li><country-flag :country='convertLangIso' size='small' /></li>
                 <li>{{ changeVoteScale }}</li>
-                <li><font-awesome-icon icon="fa-star" v-for="n in 5" :icon="n <= changeVoteScale(info.vote_average) ? 'red' : 'fa-solid'"/></li>
+                <li>
+                    <font-awesome-icon icon="fa-star fa-solid" v-for="n in changeVoteScale"/>
+                    <font-awesome-icon icon="fa-star fa-regular" v-for="n in 5 - changeVoteScale"/>
+                </li>
             </ul>
+        </div>
 
 </template>
 
