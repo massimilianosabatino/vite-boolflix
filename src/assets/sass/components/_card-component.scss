@@ -1,16 +1,16 @@
 .single-element {
-    width: 170px;
-    padding: 0 15px 30px 15px;
+    width: 10.625rem;
+    padding: 0 .9375rem 1.875rem .9375rem;
 
     .card {
         -webkit-perspective: 150rem;
         perspective: 150rem;
         -moz-perspective: 150rem;
         position: relative;
-        height: 250px;
+        height: 15.625rem;
     
         .card__side {
-            height: 250px;
+            height: 15.625rem;
             -webkit-transition: all 0.8s ease;
             transition: all 0.8s ease;
             position: absolute;

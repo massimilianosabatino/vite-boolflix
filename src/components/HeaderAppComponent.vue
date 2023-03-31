@@ -18,5 +18,5 @@
 </template>
 
 <style lang="scss" scoped>
-@use './../assets/sass/sections/header'
+@use './../assets/sass/sections/header';
 </style>

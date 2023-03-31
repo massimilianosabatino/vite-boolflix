@@ -43,18 +43,6 @@ export default {
 </script>
 
 <template>
-        <!-- <div class="poster-view">
-            <img :src="setPoster" alt="">
-            <h2>{{ info.title || info.name }}</h2>
-        </div>
-        <div class="details-view">
-            <h3>{{ info.original_title || info.original_name}}</h3>
-            <div class="language"><country-flag :country='convertLangIso' size='small' /></div>
-            <div class="vote">
-                <font-awesome-icon icon="fa-star fa-solid" v-for="n in changeVoteScale"/>
-                <font-awesome-icon icon="fa-star fa-regular" v-for="n in 5 - changeVoteScale"/>
-            </div>
-        </div> -->
         <div class="single-element">
             <div class="card">
                 <div class="card__side card__side--front-1">
@@ -75,9 +63,6 @@ export default {
             </div>
              <h2>{{ info.title || info.name }}</h2>
         </div>
-
-
-        
 </template>
 
 <style lang="scss" scoped>
