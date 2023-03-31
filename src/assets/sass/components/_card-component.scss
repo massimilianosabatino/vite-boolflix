@@ -1,3 +1,5 @@
+@use './../abstracts/variables' as *;
+
 .single-element {
     width: 10.625rem;
     padding: 0 .9375rem 1.875rem .9375rem;
@@ -54,6 +56,9 @@
         .card__side--back {
             -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
+            background-color: #343434;
+            border: 2px solid $primary-color;
+            padding: .3125rem;
         }
     }
 
@@ -63,5 +68,27 @@
         overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+    }
+    h3 {
+        font-size: .875rem;
+    }
+
+    h4 {
+        font-size: .75rem;
+    }
+    .language {
+        margin: .3125rem 0 .3125rem 0;
+    }
+
+    .rating{
+        margin-bottom: .3125rem;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    .overview {
+        font-size: .875rem;
     }
 }

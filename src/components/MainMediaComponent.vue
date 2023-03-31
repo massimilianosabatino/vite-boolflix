@@ -35,10 +35,11 @@ export default {
     <div class="container-category">
         <CardComponent :info="media" v-for="media in allMediaDisplay"/>
     </div>
+    <div class="pagination">
+        <button type="button">LOAD MORE</button>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-h2 {
-    margin-bottom: .9375rem;
-}
+@use './../assets/sass/sections/main-media'
 </style>

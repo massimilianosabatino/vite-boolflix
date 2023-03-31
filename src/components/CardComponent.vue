@@ -50,12 +50,12 @@ export default {
                 <div class="card__side card__side--back card__side--back-1">
                     <h3>{{ info.original_title || info.original_name }}</h3>
                     <div class="language"><country-flag :country='convertLangIso' size='small' /></div>
-                    <div class="vote">
+                    <div class="rating">
                         <font-awesome-icon icon="fa-star fa-solid" v-for="n in changeVoteScale"/>
                         <font-awesome-icon icon="fa-star fa-regular" v-for="n in 5 - changeVoteScale"/>
                     </div>
                     <div class="overview">
-                        Overview:
+                        <h4>Overview:</h4>
                         {{ info.overview }}
                     </div>
                 </div>
