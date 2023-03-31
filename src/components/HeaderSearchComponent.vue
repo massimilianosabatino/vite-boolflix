@@ -5,6 +5,7 @@ import { ITERATE_KEY } from '@vue/reactivity';
 
 export default {
     name: 'Search',
+    inheritAttrs: false, //Disabling Attribute Inheritance - for warn in console because have class on component
     data(){
         return {
             store,
