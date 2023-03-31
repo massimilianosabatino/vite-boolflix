@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from './../store'
+import { ITERATE_KEY } from '@vue/reactivity';
 
 export default {
     name: 'Search',
@@ -11,24 +12,28 @@ export default {
     },
     methods: {
         getMovies(){
-            //Utility variables
-            const api = 'api_key=' + this.store.utility.apiKey;
-            const lang = 'language=it-IT';
-            
-            //User search field
-            const searchText = 'query=' + this.store.searchKey;
-            const search = encodeURI(searchText);
-
             //Get Movies
-            const urlMovie = this.store.utility.getApiMovies;
-            axios.get(`${urlMovie}${api}&${lang}&${search}`)
-                .then(response => this.store.movies = response.data.results);
+            axios({
+                baseURL: this.store.utility.apiUrl,
+                url: this.store.utility.getApiMovies,
+                params:{
+                    api_key: this.store.utility.apiKey,
+                    language: 'it-IT',
+                    query: this.store.searchKey,
+                }
+            }).then(response => this.store.movies = response.data.results);
 
             //Get Tv Shows
-            const urlTv = this.store.utility.getApiTvShows;
-            axios.get(`${urlTv}${api}&${lang}&${search}`)
-                .then(response => this.store.tvShows = response.data.results);
-        },
+            axios({
+                baseURL: this.store.utility.apiUrl,
+                url: this.store.utility.getApiTvShows,
+                params:{
+                    api_key: this.store.utility.apiKey,
+                    language: 'it-IT',
+                    query: this.store.searchKey,
+                }
+            }).then(response => this.store.tvShows = response.data.results);
+        }
     }
 }
 </script>
