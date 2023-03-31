@@ -10,18 +10,6 @@ export default {
         CountryFlag,
     },
     computed: {
-        //Change key name in Tv Show object to match 
-        changeNameToTitle(){
-                if(this.info.hasOwnProperty('name')){
-                    return {
-                        ...this.info,
-                        title: this.info.name,
-                        original_title: this.info.original_name,
-                    }
-                }else {
-                    return this.info
-                }
-        },
         convertLangIso() {
             switch (this.info.original_language) {
                 case 'en':
@@ -49,31 +37,49 @@ export default {
     data(){
         return {
             store,
-            imYea: false,
         }
     }
 }
 </script>
 
 <template>
-    <!-- name in show not title -->
-        <!-- <div v-if="imYea"><h1>CIAO</h1></div> -->
-        <div @mouseenter="imYea = true" @mouseleave="imYea = false">
-            <h1>{{ changeNameToTitle.title }}</h1>
+        <!-- <div class="poster-view">
             <img :src="setPoster" alt="">
-            <ul>
-                <li>{{ changeNameToTitle.original_title }}</li>
-                <li><country-flag :country='convertLangIso' size='small' /></li>
-                <li>{{ changeVoteScale }}</li>
-                <li>
-                    <font-awesome-icon icon="fa-star fa-solid" v-for="n in changeVoteScale"/>
-                    <font-awesome-icon icon="fa-star fa-regular" v-for="n in 5 - changeVoteScale"/>
-                </li>
-            </ul>
+            <h2>{{ info.title || info.name }}</h2>
+        </div>
+        <div class="details-view">
+            <h3>{{ info.original_title || info.original_name}}</h3>
+            <div class="language"><country-flag :country='convertLangIso' size='small' /></div>
+            <div class="vote">
+                <font-awesome-icon icon="fa-star fa-solid" v-for="n in changeVoteScale"/>
+                <font-awesome-icon icon="fa-star fa-regular" v-for="n in 5 - changeVoteScale"/>
+            </div>
+        </div> -->
+        <div class="single-element">
+            <div class="card">
+                <div class="card__side card__side--front-1">
+                    <img :src="setPoster" alt="">
+                </div>
+                <div class="card__side card__side--back card__side--back-1">
+                    <h3>{{ info.original_title || info.original_name }}</h3>
+                    <div class="language"><country-flag :country='convertLangIso' size='small' /></div>
+                    <div class="vote">
+                        <font-awesome-icon icon="fa-star fa-solid" v-for="n in changeVoteScale"/>
+                        <font-awesome-icon icon="fa-star fa-regular" v-for="n in 5 - changeVoteScale"/>
+                    </div>
+                    <div class="overview">
+                        Overview:
+                        {{ info.overview }}
+                    </div>
+                </div>
+            </div>
+             <h2>{{ info.title || info.name }}</h2>
         </div>
 
+
+        
 </template>
 
 <style lang="scss" scoped>
-
+@use './../assets/sass/components/card-component';
 </style>

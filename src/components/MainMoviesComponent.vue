@@ -17,12 +17,11 @@ export default {
 
 <template>
     <h2>Movies</h2>
-    <ul>
-        <li v-for="movie in store.movies">
-            <CardComponent :info="movie" />
-        </li>
-    </ul>
+    <div class="container-category">
+        <CardComponent :info="movie" v-for="movie in store.movies"/>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+
 </style>

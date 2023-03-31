@@ -1,5 +1,13 @@
 body {
     background-color: #101010;
+
+}
+
+.container-category{
+    display: flex;
+    flex-wrap: wrap;
+    width: 98%;
+    margin: 0 auto 50px auto;
 }
 
 // Style for flag in MainMovieComponent and MainTvShowComponent

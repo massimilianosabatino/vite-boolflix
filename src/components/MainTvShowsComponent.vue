@@ -17,11 +17,9 @@
 
 <template>
     <h2>Tv Shows</h2>
-    <ul>
-        <li v-for="show in store.tvShows">
-            <CardComponent :info="show" />
-        </li>
-    </ul>
+    <div class="container-category">
+        <CardComponent :info="show" v-for="show in store.tvShows"/>
+    </div>
 </template>
 
 <style lang="scss" scoped>

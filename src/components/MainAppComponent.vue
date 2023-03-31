@@ -11,10 +11,14 @@
 </script>
 
 <template>
-    <MainMoviesComponent />
-    <MainTvShowsComponent />
+    <main>
+        <MainMoviesComponent />
+        <MainTvShowsComponent />
+    </main>
 </template>
 
 <style lang="scss" scoped>
-
+main {
+    padding-left: 1.5625rem;
+}
 </style>
