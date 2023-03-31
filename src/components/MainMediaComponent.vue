@@ -1,27 +1,63 @@
 <script>
+import axios from 'axios';
 import { store } from '../store';
 import CardComponent from './CardComponent.vue';
 
 export default {
-    name: 'Movies Component',
+    name: 'Media Component',
     components: {
         CardComponent,
     },
     data() {
         return {
             store,
+            page: 1,
+        }
+    },
+    methods: {
+        morePage(){
+            this.page++;
+            //Get Movies
+            axios({
+                baseURL: this.store.utility.apiUrl,
+                url: this.store.utility.getApiMovies,
+                params:{
+                    api_key: this.store.utility.apiKey,
+                    language: 'it-IT',
+                    query: this.store.searchKey,
+                    page: this.page,
+                }
+            }).then(response => {
+                const merger = response.data.results;
+                this.store.movies.push(...merger);
+            })
+
+            //Get Tv Shows
+            axios({
+                baseURL: this.store.utility.apiUrl,
+                url: this.store.utility.getApiTvShows,
+                params:{
+                    api_key: this.store.utility.apiKey,
+                    language: 'it-IT',
+                    query: this.store.searchKey,
+                    page: this.page,
+                }
+            }).then(response => {
+                const merger = response.data.results;
+                this.store.tvShows.push(...merger);
+            });
         }
     },
     computed: {
         allMediaDisplay(){
             const movie = this.store.movies.map(x => ({
                 ...x,
-                mediaType: 'movie'
+                // mediaType: 'movie'
             }));
 
             const tv = this.store.tvShows.map(x => ({
                 ...x,
-                mediaType: 'tv'
+                // mediaType: 'tv'
             }));
 
             return [...movie, ...tv]
@@ -36,7 +72,7 @@ export default {
         <CardComponent :info="media" v-for="media in allMediaDisplay"/>
     </div>
     <div class="pagination">
-        <button type="button">LOAD MORE</button>
+        <button type="button" @click="morePage">LOAD MORE</button>
     </div>
 </template>
 

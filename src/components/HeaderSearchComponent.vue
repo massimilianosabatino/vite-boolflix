@@ -34,12 +34,15 @@ export default {
                     query: this.store.searchKey,
                 }
             }).then(response => this.store.tvShows = response.data.results);
+        },
+        addPage() {
+            console.log(n)
         }
     }
 }
 </script>
 
-<template>
+<template @morePage="addPage">
     <input type="text" @keyup.enter="getMovies" v-model="store.searchKey">
     <button type="button" @click="getMovies">Cerca</button>
 </template>
