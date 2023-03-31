@@ -13,7 +13,6 @@ export default {
         },
     methods: {
             showFlag(lang){
-                    console.log(lang)
                     this.src = `/src/assets/img/flag/${lang}.svg`;
                     this.alt = `"Flag of ${lang}"`;
             }

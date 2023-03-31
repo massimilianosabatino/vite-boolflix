@@ -30,7 +30,6 @@ export default {
             return vote
         },
         setPoster(){
-            console.log(this.info)
             return this.store.utility.imgBaseUrl + this.store.utility.imgSize + this.info.poster_path;
         }
     },
