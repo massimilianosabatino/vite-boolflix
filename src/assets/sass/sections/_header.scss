@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 1.5625rem;
+    .logo {
+        flex-grow: 1;
+        max-width: 5rem;
+        margin-right: 1.5625rem;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .search {
+        flex-grow: 1;
+    }
+}

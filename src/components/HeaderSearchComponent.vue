@@ -39,5 +39,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+@use './../assets/sass/components/search';
 </style>

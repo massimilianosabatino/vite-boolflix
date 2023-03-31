@@ -1,0 +1,21 @@
+@mixin default-apparence {
+    padding: .625rem;
+    background-color: #343434;
+    border: 2px solid #393939;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #c3c3c3;
+}
+
+input {
+    @include default-apparence;
+    margin-right: .625rem;
+}
+
+button {
+    @include default-apparence;
+    cursor: pointer;
+    &:hover {
+        background-color: #393939;
+    }
+}
