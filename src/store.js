@@ -12,5 +12,6 @@ export const store = reactive({
         getApiTvShows: '/search/tv',
         imgSize: 'w342',
         imgBaseUrl: 'http://image.tmdb.org/t/p/',
+        page: 1,
     }
 });

@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import { store } from '../store';
 import CardComponent from './CardComponent.vue';
 
@@ -11,41 +11,7 @@ export default {
     data() {
         return {
             store,
-            page: 1,
-        }
-    },
-    methods: {
-        morePage(){
-            this.page++;
-            //Get Movies
-            axios({
-                baseURL: this.store.utility.apiUrl,
-                url: this.store.utility.getApiMovies,
-                params:{
-                    api_key: this.store.utility.apiKey,
-                    language: 'it-IT',
-                    query: this.store.searchKey,
-                    page: this.page,
-                }
-            }).then(response => {
-                const merger = response.data.results;
-                this.store.movies.push(...merger);
-            })
-
-            //Get Tv Shows
-            axios({
-                baseURL: this.store.utility.apiUrl,
-                url: this.store.utility.getApiTvShows,
-                params:{
-                    api_key: this.store.utility.apiKey,
-                    language: 'it-IT',
-                    query: this.store.searchKey,
-                    page: this.page,
-                }
-            }).then(response => {
-                const merger = response.data.results;
-                this.store.tvShows.push(...merger);
-            });
+            // page: 1,
         }
     },
     computed: {
@@ -72,7 +38,7 @@ export default {
         <CardComponent :info="media" v-for="media in allMediaDisplay"/>
     </div>
     <div class="pagination">
-        <button type="button" @click="morePage">LOAD MORE</button>
+        <button type="button" @click="store.utility.page++">LOAD MORE</button>
     </div>
 </template>
 

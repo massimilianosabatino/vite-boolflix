@@ -13,6 +13,7 @@ export default {
     },
     methods: {
         getMovies(){
+            this.store.utility.page = 1;
             //Get Movies
             axios({
                 baseURL: this.store.utility.apiUrl,
@@ -37,6 +38,42 @@ export default {
         },
         addPage() {
             console.log(n)
+        }
+    },
+    watch: {
+        'store.utility.page'(num) {
+            console.log(num)
+            if(num > 1) {
+                //Get Movies
+                axios({
+                    baseURL: store.utility.apiUrl,
+                    url: store.utility.getApiMovies,
+                    params:{
+                        api_key: store.utility.apiKey,
+                        language: 'it-IT',
+                        query: store.searchKey,
+                        page: num,
+                    }
+                }).then(response => {
+                    const merger = response.data.results;
+                    store.movies.push(...merger);
+                })
+
+                //Get Tv Shows
+                axios({
+                    baseURL: store.utility.apiUrl,
+                    url: store.utility.getApiTvShows,
+                    params:{
+                        api_key: store.utility.apiKey,
+                        language: 'it-IT',
+                        query: store.searchKey,
+                        page: num,
+                    }
+                }).then(response => {
+                    const merger = response.data.results;
+                    store.tvShows.push(...merger);
+                });
+            }
         }
     }
 }
