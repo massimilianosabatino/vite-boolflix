@@ -1,10 +1,22 @@
 <script>
+import { store } from '../store';
 export default {
   props: {
     show: Boolean,
     info: Object,
     poster: String,
   },
+  data(){
+    return {
+      store,
+    }
+  },
+  computed: {
+    getGenres(){
+      const genreName = this.store.genresMovie.filter(genre => this.info.genre_ids.includes(genre.id));
+      return genreName;
+    }
+  }
 }
 </script>
 
@@ -33,7 +45,11 @@ export default {
                 <p>{{ info.overview }}</p>
               </div>
               <div class="details">
-                
+                <div class="genres">
+                  <ul>
+                    <li v-for="genre in getGenres">{{ genre.name }}</li>
+                  </ul>
+                </div>
               </div>
             </div>
 

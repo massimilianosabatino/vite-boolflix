@@ -81,5 +81,18 @@
                 margin-top: 1.5625rem;
             }
         }
+
+        .details{
+            .genres{
+                margin-top: 1.875rem;
+                ul{
+                    display: flex;
+                    color: #b8b8b8;
+                    li:not(:last-child){
+                        margin-right: .625rem;
+                    }
+                }
+            }
+        }
     }
   }
