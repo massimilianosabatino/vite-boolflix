@@ -12,8 +12,11 @@ export default {
         }
     },
     methods: {
-        getMovies(){
+        getMedia(){
             this.store.utility.page = 1;
+            this.callApi();
+        },
+        callApi(){
             //Get Movies
             axios({
                 baseURL: this.store.utility.apiUrl,
@@ -22,8 +25,16 @@ export default {
                     api_key: this.store.utility.apiKey,
                     language: 'it-IT',
                     query: this.store.searchKey,
+                    page: this.store.utility.page,
                 }
-            }).then(response => this.store.movies = response.data.results);
+            }).then(response => {
+                if(this.store.utility.page === 1){
+                    this.store.movies = response.data.results
+                }else{
+                    const merger = response.data.results;
+                    store.movies.push(...merger);
+                }
+            });
 
             //Get Tv Shows
             axios({
@@ -33,46 +44,22 @@ export default {
                     api_key: this.store.utility.apiKey,
                     language: 'it-IT',
                     query: this.store.searchKey,
+                    page: this.store.utility.page,
                 }
-            }).then(response => this.store.tvShows = response.data.results);
+            }).then(response => {
+                if(this.store.utility.page === 1){
+                    this.store.tvShows = response.data.results
+                }else{
+                    const merger = response.data.results;
+                    store.tvShows.push(...merger);
+                }
+            });
         },
-        addPage() {
-            console.log(n)
-        }
     },
     watch: {
         'store.utility.page'(num) {
-            console.log(num)
             if(num > 1) {
-                //Get Movies
-                axios({
-                    baseURL: store.utility.apiUrl,
-                    url: store.utility.getApiMovies,
-                    params:{
-                        api_key: store.utility.apiKey,
-                        language: 'it-IT',
-                        query: store.searchKey,
-                        page: num,
-                    }
-                }).then(response => {
-                    const merger = response.data.results;
-                    store.movies.push(...merger);
-                })
-
-                //Get Tv Shows
-                axios({
-                    baseURL: store.utility.apiUrl,
-                    url: store.utility.getApiTvShows,
-                    params:{
-                        api_key: store.utility.apiKey,
-                        language: 'it-IT',
-                        query: store.searchKey,
-                        page: num,
-                    }
-                }).then(response => {
-                    const merger = response.data.results;
-                    store.tvShows.push(...merger);
-                });
+                this.callApi();
             }
         }
     }
@@ -80,8 +67,8 @@ export default {
 </script>
 
 <template @morePage="addPage">
-    <input type="text" @keyup.enter="getMovies" v-model="store.searchKey">
-    <button type="button" @click="getMovies">Cerca</button>
+    <input type="text" @keyup.enter="getMedia" v-model="store.searchKey">
+    <button type="button" @click="getMedia">Cerca</button>
 </template>
 
 <style lang="scss" scoped>
