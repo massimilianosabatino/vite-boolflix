@@ -1,6 +1,7 @@
 <script>
-import CountryFlag from 'vue-country-flag-next'
-import { store } from '../store'
+import CountryFlag from 'vue-country-flag-next';
+import { store } from '../store';
+import CardModalComponent from './CardModalComponent.vue';
 export default {
     name: 'Card',
     props: {
@@ -8,6 +9,7 @@ export default {
     },
     components: {
         CountryFlag,
+        CardModalComponent,
     },
     computed: {
         convertLangIso() {
@@ -36,6 +38,7 @@ export default {
     data(){
         return {
             store,
+            showModal: false,
         }
     }
 }
@@ -47,7 +50,7 @@ export default {
                 <div class="card__side card__side--front-1">
                     <img :src="setPoster" alt="">
                 </div>
-                <div class="card__side card__side--back card__side--back-1">
+                <div class="card__side card__side--back card__side--back-1" @click="showModal = true">
                     <h3>{{ info.original_title || info.original_name }}</h3>
                     <div class="language"><country-flag :country='convertLangIso' size='small' /></div>
                     <div class="rating">
@@ -62,6 +65,15 @@ export default {
             </div>
              <h2>{{ info.title || info.name }}</h2>
         </div>
+
+    <!-- Modal for full screen info -->
+    <!-- <Teleport to="body"> -->
+    <CardModalComponent :show="showModal" :info="info" :poster="setPoster" @close="showModal = false">
+        <!-- <template #header>
+        <h3>custom header</h3>
+        </template> -->
+    </CardModalComponent>
+    <!-- </Teleport> -->
 </template>
 
 <style lang="scss" scoped>

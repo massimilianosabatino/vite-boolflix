@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from './../store'
-import { ITERATE_KEY } from '@vue/reactivity';
+
 
 export default {
     name: 'Search',
@@ -68,7 +68,7 @@ export default {
 
 <template @morePage="addPage">
     <input type="text" @keyup.enter="getMedia" v-model="store.searchKey">
-    <button type="button" @click="getMedia">Cerca</button>
+    <button type="button" @click="getMedia">Cerca</button> 
 </template>
 
 <style lang="scss" scoped>
