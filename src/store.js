@@ -5,6 +5,8 @@ export const store = reactive({
     tvShows: [],
     genresMovie: [],
     genresTv: [],
+    tempG: [],
+    genres: [],
     searchKey: '',
     flagList: ['it', 'en', 'de', 'es', 'fr', 'gb', 'us'],
     utility: {

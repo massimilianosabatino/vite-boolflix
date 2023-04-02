@@ -18,12 +18,12 @@ export default {
         allMediaDisplay(){
             const movie = this.store.movies.map(x => ({
                 ...x,
-                // mediaType: 'movie'
+                mediaType: 'movie'
             }));
 
             const tv = this.store.tvShows.map(x => ({
                 ...x,
-                // mediaType: 'tv'
+                mediaType: 'tv'
             }));
 
             return [...movie, ...tv]

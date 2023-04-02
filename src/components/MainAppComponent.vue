@@ -16,7 +16,7 @@
             MainTvShowsComponent,
             MainMediaComponent,
         },
-        mounted(){
+        created(){
             //Get genres from API
             axios({
                 baseURL: this.store.utility.apiUrl,
@@ -26,7 +26,10 @@
                     language: 'it-IT',
                     query: this.store.searchKey,
                 }
-            }).then(response => this.store.genresMovie = response.data.genres);
+            }).then(response => {
+                this.store.genresMovie = response.data.genres;
+                // this.store.tempG.push(...this.store.genresMovie);
+            }).then(response => this.store.tempG.push(...this.store.genresMovie));
             axios({
                 baseURL: this.store.utility.apiUrl,
                 url: this.store.utility.getGenresTv,
@@ -35,8 +38,11 @@
                     language: 'it-IT',
                     query: this.store.searchKey,
                 }
-            }).then(response => this.store.genresTv = response.data.genres);
-        }
+            }).then(response => {
+                this.store.genresTv = response.data.genres;
+                // this.store.tempG.push(...this.store.genresTv);
+            }).then(response => this.store.tempG.push(...this.store.genresTv));
+        },
     }
 </script>
 

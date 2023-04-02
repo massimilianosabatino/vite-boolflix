@@ -13,7 +13,13 @@ export default {
   },
   computed: {
     getGenres(){
-      const genreName = this.store.genresMovie.filter(genre => this.info.genre_ids.includes(genre.id));
+      console.log('mount')
+            //Create array of unique id
+            this.store.genres = Array.from(new Set(this.store.tempG.map(g => g.id)))
+                //Returns the object corresponding to the id
+                .map(id => this.store.tempG.find(g => g.id === id));
+      //Returns only those included in the media object
+      const genreName = this.store.genres.filter(genre => this.info.genre_ids.includes(genre.id));
       return genreName;
     }
   }
