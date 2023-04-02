@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import CountryFlag from 'vue-country-flag-next';
 import { store } from '../store';
 import CardModalComponent from './CardModalComponent.vue';
@@ -33,12 +34,28 @@ export default {
         },
         setPoster(){
             return this.store.utility.imgBaseUrl + this.store.utility.imgSize + this.info.poster_path;
-        }
+        },
+    },
+    methods: {
+        getCredits(){
+            const movie_id = this.info.id;
+            axios({
+                baseURL: this.store.utility.apiUrl,
+                url: `/movie/${movie_id}/credits`,
+                params:{
+                    api_key: this.store.utility.apiKey,
+                    language: 'it-IT',
+                }
+                }).then(response => this.people = response.data.cast);
+                return this.people
+        },
+        
     },
     data(){
         return {
             store,
             showModal: false,
+            people: [],
         }
     }
 }
@@ -46,7 +63,7 @@ export default {
 
 <template>
         <div class="single-element">
-            <div class="card">
+            <div class="card" @click="getCredits">
                 <div class="card__side card__side--front-1">
                     <img :src="setPoster" alt="">
                 </div>
@@ -68,7 +85,7 @@ export default {
 
     <!-- Modal for full screen info -->
     <!-- <Teleport to="body"> -->
-    <CardModalComponent :show="showModal" :info="info" :poster="setPoster" @close="showModal = false">
+    <CardModalComponent :show="showModal" :info="info" :poster="setPoster" :cast="people" @close="showModal = false">
         <!-- <template #header>
         <h3>custom header</h3>
         </template> -->

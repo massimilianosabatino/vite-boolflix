@@ -1,19 +1,21 @@
 <script>
+import axios from 'axios';
 import { store } from '../store';
 export default {
   props: {
     show: Boolean,
     info: Object,
     poster: String,
+    cast: Array,
   },
   data(){
     return {
       store,
+      moreCast: false,
     }
   },
   computed: {
     getGenres(){
-      console.log('mount')
             //Create array of unique id
             this.store.genres = Array.from(new Set(this.store.tempG.map(g => g.id)))
                 //Returns the object corresponding to the id
@@ -21,7 +23,7 @@ export default {
       //Returns only those included in the media object
       const genreName = this.store.genres.filter(genre => this.info.genre_ids.includes(genre.id));
       return genreName;
-    }
+    },
   }
 }
 </script>
@@ -52,8 +54,20 @@ export default {
               </div>
               <div class="details">
                 <div class="genres">
-                  <ul>
+                  <ul>                    
                     <li v-for="genre in getGenres">{{ genre.name }}</li>
+                  </ul>
+                </div>
+                <div class="cast">
+                  <h3>CAST</h3>
+                  <ul>
+                    <template v-for="(actor, index) in cast">
+                      <!-- <li v-for="actor in cast">{{ actor.name }}</li> -->
+                      <li v-if="index < 5 && !moreCast">{{ actor.name }}</li>
+                      <li v-else-if="moreCast">{{ actor.name }}</li>
+                    </template>
+                    <h4 v-if="!moreCast" @click="moreCast = !moreCast">more..</h4>
+                    <h4 v-else-if="moreCast" @click="moreCast = !moreCast">less..</h4>
                   </ul>
                 </div>
               </div>
