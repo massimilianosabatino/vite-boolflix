@@ -69,7 +69,7 @@ export default {
 <template @morePage="addPage">
     <input type="text" @keyup.enter="getMedia" v-model="store.searchKey">
     <button type="button" @click="getMedia">Cerca</button>
-    <select name="genres" id="genres-select" v-model="store.filterKey">
+    <select name="genres" id="genres-select" v-model="store.filterKey" v-show="store.genres.length > 0">
         <option value="" default>Filter by genres</option>
         <template v-for="genre in store.genres">
             <option :value="genre.id">{{ genre.name }}</option>
