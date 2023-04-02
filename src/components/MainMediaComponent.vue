@@ -43,5 +43,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use './../assets/sass/sections/main-media'
+@use './../assets/sass/sections/main-media';
 </style>

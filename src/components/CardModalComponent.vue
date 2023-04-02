@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { DateTime } from "luxon";
 import { store } from '../store';
 export default {
   props: {
@@ -24,6 +25,10 @@ export default {
       const genreName = this.store.genres.filter(genre => this.info.genre_ids.includes(genre.id));
       return genreName;
     },
+    convertDate(){
+      console.log(DateTime.fromFormat(this.info.release_date, 'yyyy-LL-dd'))
+      return DateTime.fromFormat(this.info.release_date, 'yyyy-LL-dd').toFormat('dd-LL-yyyy')
+    }
   }
 }
 </script>
@@ -82,11 +87,11 @@ export default {
 
         <div class="modal-footer">
           <slot name="footer">
-            default footer
+            <span>Data di uscita: {{ convertDate }}</span>
             <button
               class="modal-default-button"
               @click="$emit('close')"
-            >OK</button>
+            >CHIUDI</button>
           </slot>
         </div>
       </div>

@@ -15,6 +15,7 @@
   .modal-container {
     width: 99%;
     height: 99vh;
+
     margin: auto;
     padding: 20px 30px;
     background-color: $secondary-color;
@@ -111,6 +112,11 @@
 
             .cast{
               margin-top: 1.875rem;
+
+              ul {
+                overflow-y: scroll;
+                max-height: 12.5rem;
+              }
             }
         }
     }
