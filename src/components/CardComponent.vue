@@ -33,7 +33,11 @@ export default {
             return vote
         },
         setPoster(){
-            return this.store.utility.imgBaseUrl + this.store.utility.imgSize + this.info.poster_path;
+            if(this.info.poster_path === null){
+                return 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+            }else{
+                return this.store.utility.imgBaseUrl + this.store.utility.imgSize + this.info.poster_path;
+            }
         },
     },
     methods: {
