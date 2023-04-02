@@ -8,6 +8,7 @@ export const store = reactive({
     tempG: [],
     genres: [],
     searchKey: '',
+    filterKey: '',
     flagList: ['it', 'en', 'de', 'es', 'fr', 'gb', 'us'],
     utility: {
         apiUrl: 'https://api.themoviedb.org/3',

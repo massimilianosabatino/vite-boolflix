@@ -39,6 +39,13 @@ export default {
                 return this.store.utility.imgBaseUrl + this.store.utility.imgSize + this.info.poster_path;
             }
         },
+        filterGenres(){
+            if(this.store.filterKey !== ''){
+               return this.info.genre_ids.includes(this.store.filterKey)
+            }else {
+                return true
+            }
+        }
     },
     methods: {
         getCredits(){
@@ -66,7 +73,7 @@ export default {
 </script>
 
 <template>
-        <div class="single-element">
+        <div class="single-element" v-show="filterGenres">
             <div class="card" @click="getCredits">
                 <div class="card__side card__side--front-1">
                     <img :src="setPoster" alt="">
