@@ -15,7 +15,15 @@ input {
 button {
     @include default-apparence;
     cursor: pointer;
+    margin-right: .625rem;
+
     &:hover {
         background-color: #393939;
     }
+}
+
+select {
+    @include default-apparence;
+    margin-left: auto;
+    
 }

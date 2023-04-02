@@ -59,6 +59,21 @@
     transform: scale(1.1);
   }
 
+  .modal-header{
+    .menu{
+      .back{
+        width: 1.875rem;
+        img{
+          width: 100%;
+
+          &:hover{
+            filter: brightness(1.2);
+          }
+        }
+      }
+    }
+  }
+
   .modal-body{
     display: flex;
     .poster{
@@ -92,6 +107,10 @@
                         margin-right: .625rem;
                     }
                 }
+            }
+
+            .cast{
+              margin-top: 1.875rem;
             }
         }
     }

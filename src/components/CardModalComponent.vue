@@ -34,7 +34,11 @@ export default {
       <div class="modal-container">
         <div class="modal-header">
           <slot name="header">
-
+            <div class="menu">
+              <div class="back" @click="$emit('close')">
+                <img src="./../assets/img/arrow-back.png" alt="back">
+              </div>
+            </div>
           </slot>
         </div>
 
