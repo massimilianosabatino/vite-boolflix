@@ -57,6 +57,7 @@ export default {
                 }
             });
         },
+        //Set filter for movies
         setMovie(){
             this.setActiveMovie = !this.setActiveMovie;
             this.setActiveTv = false;
@@ -66,6 +67,7 @@ export default {
                 this.store.filterMedia = ''
             }
         },
+        //Set filter for Tv shows
         setTv(){
             this.setActiveTv = !this.setActiveTv;
             this.setActiveMovie = false;
@@ -76,6 +78,7 @@ export default {
             }
         },
     },
+    //Pagination utility
     watch: {
         'store.utility.page'(num) {
             if(num > 1) {

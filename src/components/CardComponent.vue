@@ -114,9 +114,12 @@ export default {
 <template >
         <div class="single-element" v-show="filterGenres">
             <div class="card" @click="getCredits">
+                <!-- Poster -->
                 <div class="card__side card__side--front-1">
-                    <img :src="setPoster" alt="">
+                    <img :src="setPoster" :alt="info.original_title || info.original_name">
                 </div>
+                <!-- /Poster -->
+                <!-- Card on hover -->
                 <div class="card__side card__side--back card__side--back-1" @click="showModal = true">
                     <h3>{{ info.original_title || info.original_name }}</h3>
                     <div class="language"><country-flag :country='convertLangIso' size='small' /></div>
@@ -129,8 +132,11 @@ export default {
                         {{ info.overview }}
                     </div>
                 </div>
+                <!-- /Card on hover -->
             </div>
+            <!-- Media title -->
              <h2>{{ info.title || info.name }}</h2>
+             <!-- /Media title -->
         </div>
 
     <!-- Modal for full screen info -->
