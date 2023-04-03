@@ -114,8 +114,28 @@
               margin-top: 1.875rem;
 
               ul {
+                display: flex;
+                flex-wrap: wrap;
                 overflow-y: scroll;
                 max-height: 12.5rem;
+                
+                li{
+                  padding: .3125rem;
+                  width: calc(100% / 6);
+
+                  .profile-pic {
+                    width: 3.125rem;
+                    margin-bottom: .3125rem;                 
+                    img{
+                      border-radius: 10%;
+                      display: block;
+                      width: 100%;
+                    }
+                  }
+                }
+                ~h4{
+                  margin-top: 1.25rem;
+                }
               }
             }
         }

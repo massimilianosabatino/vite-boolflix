@@ -27,8 +27,8 @@ export default {
     },
     convertDate(){
       return DateTime.fromFormat(this.info.release_date, 'yyyy-LL-dd').toFormat('dd-LL-yyyy')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -71,12 +71,22 @@ export default {
                   <ul>
                     <template v-for="(actor, index) in cast">
                       <!-- <li v-for="actor in cast">{{ actor.name }}</li> -->
-                      <li v-if="index < 5 && !moreCast">{{ actor.name }}</li>
-                      <li v-else-if="moreCast">{{ actor.name }}</li>
+                      <li v-if="index < 5 && !moreCast">
+                        <div class="profile-pic">
+                          <img :src="store.utility.imgBaseUrl+'w185'+actor.profile_path" alt="">
+                        </div>
+                        <div class="cast-member">{{ actor.name }}</div>
+                      </li>
+                      <li v-else-if="moreCast">
+                        <div class="profile-pic">
+                          <img :src="store.utility.imgBaseUrl+'w185'+actor.profile_path" alt="">
+                        </div>
+                        <div class="cast-member">{{ actor.name }}</div>
+                      </li>
                     </template>
-                    <h4 v-if="!moreCast" @click="moreCast = !moreCast">more..</h4>
-                    <h4 v-else-if="moreCast" @click="moreCast = !moreCast">less..</h4>
                   </ul>
+                  <h4 v-if="!moreCast" @click="moreCast = !moreCast">more..</h4>
+                  <h4 v-else-if="moreCast" @click="moreCast = !moreCast">less..</h4>
                 </div>
               </div>
             </div>
