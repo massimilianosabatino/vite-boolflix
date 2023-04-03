@@ -9,6 +9,7 @@ export const store = reactive({
     genres: [],
     searchKey: '',
     filterKey: '',
+    filterMedia: '',
     flagList: ['it', 'en', 'de', 'es', 'fr', 'gb', 'us'],
     utility: {
         apiUrl: 'https://api.themoviedb.org/3',

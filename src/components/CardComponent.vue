@@ -40,12 +40,38 @@ export default {
             }
         },
         filterGenres(){
-            if(this.store.filterKey !== ''){
-               return this.info.genre_ids.includes(this.store.filterKey)
-            }else {
-                return true
+            // if(this.store.filterKey !== ''){
+            //    return this.info.genre_ids.includes(this.store.filterKey)
+            // }else {
+            //     return true
+            // }
+            if(this.store.filterMedia === ''){
+                switch (this.store.filterKey ) {
+                    case (''):
+                        return true;
+                    case 'movie':
+                        return this.info.mediaType.includes('movie');
+                    case 'tv':
+                        return this.info.mediaType.includes('tv');
+                    default :
+                        return this.info.genre_ids.includes(this.store.filterKey);
+                }
+            }else if(this.store.filterMedia !== ''){
+                switch (this.store.filterKey ) {
+                    case (''):
+                        return this.info.mediaType.includes(this.store.filterMedia);
+
+                    default :
+                        const byGenre = this.info.genre_ids.includes(this.store.filterKey);
+                        const byMedia = this.info.mediaType.includes(this.store.filterMedia);
+                        if(byGenre && byMedia){
+                            return true
+                        }else {
+                            return false
+                        }
+                }
             }
-        }
+        },
     },
     methods: {
         getCredits(){
@@ -72,7 +98,7 @@ export default {
 }
 </script>
 
-<template>
+<template >
         <div class="single-element" v-show="filterGenres">
             <div class="card" @click="getCredits">
                 <div class="card__side card__side--front-1">

@@ -26,7 +26,6 @@ export default {
       return genreName;
     },
     convertDate(){
-      console.log(DateTime.fromFormat(this.info.release_date, 'yyyy-LL-dd'))
       return DateTime.fromFormat(this.info.release_date, 'yyyy-LL-dd').toFormat('dd-LL-yyyy')
     }
   }
