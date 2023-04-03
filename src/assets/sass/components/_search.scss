@@ -22,6 +22,14 @@ button {
     }
 }
 
+.media-type {
+    margin-left: 1.875rem;
+    .active{
+        background-color: #525252;
+        color: #c3c3c3;
+    }
+}
+
 select {
     @include default-apparence;
     margin-left: auto;

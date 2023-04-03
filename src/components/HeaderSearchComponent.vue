@@ -9,6 +9,8 @@ export default {
     data(){
         return {
             store,
+            setActiveMovie: false,
+            setActiveTv: false,
         }
     },
     methods: {
@@ -56,6 +58,8 @@ export default {
             });
         },
         setMovie(){
+            this.setActiveMovie = !this.setActiveMovie;
+            this.setActiveTv = false;
             if(this.store.filterMedia === ''){
                 this.store.filterMedia = 'movie'
             }else{
@@ -63,6 +67,8 @@ export default {
             }
         },
         setTv(){
+            this.setActiveTv = !this.setActiveTv;
+            this.setActiveMovie = false;
             if(this.store.filterMedia === ''){
                 this.store.filterMedia = 'tv'
             }else{
@@ -84,8 +90,8 @@ export default {
     <input type="text" @keyup.enter="getMedia" v-model="store.searchKey">
     <button type="button" @click="getMedia">Cerca</button>
     <div class="media-type">
-        <button class="movie" @click="setMovie">MOVIE</button>
-        <button class="tv" @click="setTv">TV SHOW</button>
+        <button class="movie" :class="{active: setActiveMovie}" @click="setMovie" >MOVIE</button>
+        <button class="tv" :class="{active: setActiveTv}" @click="setTv">TV SHOW</button>
     </div>
     <select name="genres" id="genres-select" v-model="store.filterKey" v-show="store.genres.length > 0">
         <option value="" default>Filter by genres</option>
