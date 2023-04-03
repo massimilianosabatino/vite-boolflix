@@ -55,6 +55,20 @@ export default {
                 }
             });
         },
+        setMovie(){
+            if(this.store.filterMedia === ''){
+                this.store.filterMedia = 'movie'
+            }else{
+                this.store.filterMedia = ''
+            }
+        },
+        setTv(){
+            if(this.store.filterMedia === ''){
+                this.store.filterMedia = 'tv'
+            }else{
+                this.store.filterMedia = ''
+            }
+        },
     },
     watch: {
         'store.utility.page'(num) {
@@ -69,6 +83,10 @@ export default {
 <template @morePage="addPage">
     <input type="text" @keyup.enter="getMedia" v-model="store.searchKey">
     <button type="button" @click="getMedia">Cerca</button>
+    <div class="media-type">
+        <button class="movie" @click="setMovie">MOVIE</button>
+        <button class="tv" @click="setTv">TV SHOW</button>
+    </div>
     <select name="genres" id="genres-select" v-model="store.filterKey" v-show="store.genres.length > 0">
         <option value="" default>Filter by genres</option>
         <template v-for="genre in store.genres">
