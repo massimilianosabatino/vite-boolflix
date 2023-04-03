@@ -9,19 +9,18 @@ Posizionando il mouse sopra una locandina, sarà possibile visualizzare:
 - Voto in stelle (massimo 5)
 - Overwiev
 
-Cliccando su ogni singola card, è possibile acedere alla scheda completa.
+Cliccando su ogni singola card è possibile acedere alla scheda completa.
 
 ---
 
-##Roadmap
+## Roadmap
 * Maggiori informazioni su ogni singola scheda
 * Trailer del film o della serie
 * Aggiunta in home consigli
 * Aggiunta menù categorie in home
 * Restyling grafico
 
-
-## Tecnologie utilizzate
+### Tecnologie utilizzate
 * Vite 4
 * Vue 3
 * Sass 
@@ -30,7 +29,10 @@ Cliccando su ogni singola card, è possibile acedere alla scheda completa.
 * Luxon 3
 
 ## Setup
-Per avviare il pacchetto dopo aver clonato il repository è necessario eseguire l’installazione dei pacchetti richiesti tramite il comando  
-	npm install
-Successivamente avviare il server di sviluppo con  
-	npm run dev
+Per avviare il pacchetto dopo aver clonato il repository è necessario eseguire l’installazione dei pacchetti richiesti tramite il comando:  
+
+    npm install  
+
+Successivamente avviare il server di sviluppo con:    
+
+    npm run dev
