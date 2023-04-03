@@ -69,6 +69,7 @@ export default {
                         }else {
                             return false
                         }
+
                 }
             }
         },
@@ -76,15 +77,27 @@ export default {
     methods: {
         getCredits(){
             const movie_id = this.info.id;
-            axios({
-                baseURL: this.store.utility.apiUrl,
-                url: `/movie/${movie_id}/credits`,
-                params:{
-                    api_key: this.store.utility.apiKey,
-                    language: 'it-IT',
-                }
-                }).then(response => this.people = response.data.cast);
-                return this.people
+            if(this.info.mediaType === 'movie'){
+                axios({
+                    baseURL: this.store.utility.apiUrl,
+                    url: `/movie/${movie_id}/credits`,
+                    params:{
+                        api_key: this.store.utility.apiKey,
+                        language: 'it-IT',
+                    }
+                    }).then(response => this.people = response.data.cast);
+                    return this.people
+            }else{
+                axios({
+                    baseURL: this.store.utility.apiUrl,
+                    url: `/tv/${movie_id}/credits`,
+                    params:{
+                        api_key: this.store.utility.apiKey,
+                        language: 'it-IT',
+                    }
+                    }).then(response => this.people = response.data.cast);
+                    return this.people
+            }
         },
         
     },
