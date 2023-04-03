@@ -11,7 +11,6 @@ export default {
     data() {
         return {
             store,
-            // page: 1,
         }
     },
     computed: {

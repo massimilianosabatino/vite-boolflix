@@ -136,9 +136,6 @@ export default {
     <!-- Modal for full screen info -->
     <!-- <Teleport to="body"> -->
     <CardModalComponent :show="showModal" :info="info" :poster="setPoster" :cast="people" @close="showModal = false">
-        <!-- <template #header>
-        <h3>custom header</h3>
-        </template> -->
     </CardModalComponent>
     <!-- </Teleport> -->
 </template>
