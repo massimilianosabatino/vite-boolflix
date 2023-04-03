@@ -60,7 +60,7 @@ export default {
         setMovie(){
             this.setActiveMovie = !this.setActiveMovie;
             this.setActiveTv = false;
-            if(this.store.filterMedia === ''){
+            if(this.store.filterMedia === '' || this.store.filterMedia === 'tv'){
                 this.store.filterMedia = 'movie'
             }else{
                 this.store.filterMedia = ''
@@ -69,7 +69,7 @@ export default {
         setTv(){
             this.setActiveTv = !this.setActiveTv;
             this.setActiveMovie = false;
-            if(this.store.filterMedia === ''){
+            if(this.store.filterMedia === '' || this.store.filterMedia === 'movie'){
                 this.store.filterMedia = 'tv'
             }else{
                 this.store.filterMedia = ''
