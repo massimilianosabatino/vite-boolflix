@@ -36,7 +36,7 @@ export default {
     <div class="container-category">
         <CardComponent :info="media" v-for="media in allMediaDisplay" />
     </div>
-    <div class="pagination">
+    <div class="pagination" v-show="allMediaDisplay.length !== 0">
         <button type="button" @click="store.utility.page++">LOAD MORE</button>
     </div>
 </template>
