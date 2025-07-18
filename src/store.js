@@ -13,7 +13,7 @@ export const store = reactive({
     flagList: ['it', 'en', 'de', 'es', 'fr', 'gb', 'us'],
     utility: {
         apiUrl: 'https://api.themoviedb.org/3',
-        apiKey: '463212cfd2d8e0a3e060dfe843d0e801',
+        apiKey: 'API_KEY_FOR_THEMOVIEDB',
         getApiMovies: '/search/movie',
         getApiTvShows: '/search/tv',
         getGenresMovie: '/genre/movie/list',
